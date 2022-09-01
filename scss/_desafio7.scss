@@ -1,0 +1,111 @@
+/*************************
+EXTEND
+*************************/
+
+.botonVerGalerias {
+    text-align: center;
+    color: $color1;
+}
+.botonGaleria {
+    position: absolute;
+    top: 50%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    transition: transform 500ms;
+    background-color: $color1;
+    color: black;
+    font-size: 14px;
+    padding: 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    text-align: center;
+    &:hover {
+        background-color: $color4;
+        color: $color1;
+        transform: translateY(5px);
+    }
+}
+
+
+.botonVideoGaleria {
+    @extend .botonGaleria;
+    &:hover {
+        background-color: $color2;
+    }
+}
+
+
+/*************************
+MIXIN
+*************************/
+
+@mixin reset-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+  }
+
+* {
+    @include reset-list();
+}
+
+@mixin sizebtnNot ($anchobtnNot, $altobtnNot) {
+    width: $anchobtnNot;
+    height: $altobtnNot;
+}
+
+@mixin brdRadius ($brdradio){
+    border-radius: $brdradio;
+}
+
+.botonNoticias {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    a {
+        @include sizebtnNot(100%,100%);
+        @include brdRadius(5px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        font-weight: 700;
+        color: #0d2033;
+        font-size: 20px;
+        opacity: .7;
+    }
+    &:hover{
+        background-color: crimson;
+        color: #ffff;
+        transition: transform 750ms ease-in-out 0s;
+        transform: scale(1.5) rotate(360deg);
+    }
+}
+
+.galeriaNoticias {
+    @include brdRadius(5px);
+    img {
+        @include brdRadius(5px);
+    }
+}
+
+
+/*************************
+MAPS
+*************************/
+$colors: (
+    "primary": #ffff,
+    "secondary": lightgray,
+    "success": #0d2033,
+    "danger": rgb(231,47,56),
+    "dark": #0000,
+);
+
+$hsize:(
+    "small":10px,
+    "medium":30px,
+    "big":60px,
+)

@@ -1,0 +1,852 @@
+@charset "UTF-8";
+/*************************
+EXTEND
+*************************/
+.botonVerGalerias {
+  text-align: center;
+  color: white;
+}
+
+.botonGaleria, .botonVideoGaleria {
+  position: absolute;
+  top: 50%;
+  left: 80%;
+  transform: translate(-50%, -50%);
+  transition: transform 500ms;
+  background-color: white;
+  color: black;
+  font-size: 14px;
+  padding: 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  text-align: center;
+}
+.botonGaleria:hover, .botonVideoGaleria:hover {
+  background-color: crimson;
+  color: white;
+  transform: translateY(5px);
+}
+
+.botonVideoGaleria:hover {
+  background-color: lightgray;
+}
+
+/*************************
+MIXIN
+*************************/
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+.botonNoticias {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+}
+.botonNoticias a {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-weight: 700;
+  color: #0d2033;
+  font-size: 20px;
+  opacity: 0.7;
+}
+.botonNoticias:hover {
+  background-color: crimson;
+  color: white;
+  transition: transform 750ms ease-in-out 0s;
+  transform: scale(1.5) rotate(360deg);
+}
+
+.galeriaNoticias {
+  border-radius: 5px;
+}
+.galeriaNoticias img {
+  border-radius: 5px;
+}
+
+/*************************
+MAPS
+*************************/
+/****************** ESTILOS GENERALES ******************/
+body {
+  background-color: white;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.contenedor, .contenedorContacto, .contenedorNoticias, .contenedorClubes {
+  margin: 0px auto;
+  padding: 10px;
+  height: 100vh;
+}
+
+.galeriaNoticias, .masNoticias, .galNotClubes {
+  background-color: white;
+  margin: 5px;
+  text-align: center;
+  position: relative;
+}
+
+.titEntrada {
+  background-color: #0d2033;
+  color: white;
+}
+.titEntrada h3 {
+  padding: 100px 15px;
+  font-weight: 700;
+  font-size: 30px;
+  text-align: left;
+}
+
+/* Header = Encabezado */
+.contenedor #encabezado {
+  grid-area: encabezado;
+}
+
+.logoLiga {
+  height: 70%;
+}
+
+/****************** PAGINAS WEBS ******************/
+/***** INDEX *****/
+/* Sección Noticias */
+.noticiaPrincipal {
+  grid-area: noticiaPrincipal;
+  color: white;
+  display: flex;
+  flex-wrap: row wrap;
+  justify-content: space-between;
+}
+.noticiaPrincipal div {
+  width: 50%;
+  margin: 10px;
+  text-align: left;
+}
+.noticiaPrincipal img {
+  width: 100%;
+}
+
+/* Galeria Noticias */
+.seccionNoticias {
+  grid-area: seccionNoticias;
+  background-color: lightgray;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 5px;
+  padding: 10px;
+}
+
+.galeriaNoticias img {
+  width: 100%;
+  height: auto;
+  opacity: 1;
+  transition: 0.5s ease;
+  backface-visibility: hidden;
+}
+.galeriaNoticias:hover {
+  background-color: crimson;
+  color: lightgray;
+  transition-property: box-shadow, transform;
+  transition-duration: 350ms;
+  transition-timing-function: ease;
+  box-shadow: 0px 8px 10px 1px rgba(0, 0, 0, 0.2);
+  transform: translateY(-8px);
+}
+
+.galeriaNoticias:hover .imgNoticia {
+  opacity: 0.3;
+}
+
+.galeriaNoticias:hover .middle {
+  opacity: 1;
+}
+
+.middle {
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 18px;
+  font-weight: 700;
+}
+.middle a {
+  text-decoration: none;
+  color: white;
+  font-weight: 700;
+}
+
+/* Sección Galería Fotos*/
+.fotoGaleria {
+  grid-area: fotoGaleria;
+  background-color: lightgray;
+}
+
+.contenedor .fotoGaleria {
+  grid-area: fotoGaleria;
+  background-color: lightgray;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  grid-gap: 5px;
+  padding: 10px;
+}
+
+div .fotoGaleria1 {
+  background-color: white;
+  border-radius: 4px;
+  margin: 5px;
+  transition: transform 0.5s;
+}
+div .fotoGaleria1:hover {
+  background-color: crimson;
+  color: white;
+  transform: scale(1.1);
+  cursor: pointer;
+}
+div .tituloGaleria {
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.fotoGaleria1 img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px 4px 0px 0px;
+}
+
+.fotoPortadaGaleria {
+  text-align: center;
+  margin: 5px;
+  background-color: #0d2033;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+/* Sección Galería Videos*/
+.videoGaleria {
+  grid-area: videoGaleria;
+  background-color: lightgray;
+}
+
+.contenedor .videoGaleria {
+  background-color: lightgray;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 2fr;
+  grid-gap: 5px;
+  padding: 10px;
+}
+
+div .videoGaleria1 {
+  background-color: white;
+  border-radius: 4px;
+  margin: 5px;
+}
+div .videoGaleria1 img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px 4px 0px 0px;
+}
+div .videoGaleria1:hover {
+  background-color: crimson;
+  color: white;
+}
+
+.videoPortadaGaleria {
+  text-align: center;
+  margin: 5px;
+  border-radius: 5px;
+  background-color: #0d2033;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+/* Noticia Clubes */
+.noticiaClubes {
+  grid-area: noticiaClubes;
+  background-color: lightgray;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 5px;
+  padding: 10px;
+}
+
+.galNotClubes img {
+  width: 100%;
+  height: auto;
+  opacity: 1;
+  transition: 0.5s ease;
+  backface-visibility: hidden;
+  filter: grayscale(100%);
+  transition: filter 450ms ease;
+}
+
+.galNotClubes:hover .imgNoticia {
+  filter: grayscale(0%) drop-shadow(0 8px 8px rgba(0, 0, 0, 0.5));
+}
+
+.galNotClubes:hover .middle {
+  opacity: 1;
+}
+
+.middle {
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.middle a {
+  text-decoration: none;
+  color: white;
+  font-weight: 700;
+}
+
+/* Sección Sider */
+.sidebar {
+  grid-area: sidebar;
+  background-color: lightgray;
+  text-align: center;
+}
+
+/* Footer=Pie de Pagina */
+.piePagina {
+  background-color: #0d2033;
+  grid-area: piePagina;
+  width: 100%;
+}
+
+.piePagina .grupo1 {
+  width: 100%;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  padding: 10px 0px;
+}
+
+.piePagina .grupo1 .box figure {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.piePagina .grupo1 .box figure img {
+  width: 200px;
+}
+
+.piePagina .grupo1 .box h2 {
+  color: white;
+  margin-bottom: 10px;
+  font-size: 30px;
+}
+
+.piePagina .grupo1 .box p {
+  color: white;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.piePagina .grupo1 .redSocial a {
+  display: inline-flex;
+  flex-wrap: wrap;
+  border-radius: 4px;
+  text-decoration: none;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  color: white;
+  margin-right: 20px;
+  margin-top: 5px;
+  background-color: crimson;
+  text-align: center;
+  justify-content: center;
+  transition: all 400ms ease;
+}
+
+.piePagina .grupo1 .redSocial a:hover {
+  color: #0d2033;
+}
+
+.piePagina .grupo2 {
+  background-color: white;
+  padding: 10px;
+  text-align: center;
+  color: #0d2033;
+}
+
+.piePagina .grupo2 small {
+  font-size: 13px;
+}
+
+/***** SITIO "CONTACTO" *****/
+/* Formulario de contacto */
+.contenedorContacto {
+  grid-area: formContacto;
+}
+
+.formContacto {
+  border-radius: 10px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+input[type=text], textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+}
+
+#csTeam {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+}
+
+input[type=email] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+}
+
+input[type=submit] {
+  background-color: lightslategray;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+}
+
+input[type=submit]:hover {
+  background-color: rgb(200, 81, 81);
+}
+
+/***** RESPONSIVE DESIGN *****/
+/* DESKTOP */
+/* estilos CSS */
+@media (min-width: 1024px) {
+  /* GRIDS por áreas */
+  .contenedor {
+    display: grid;
+    /*Estructura por áreas */
+    grid-template-areas: "encabezado encabezado encabezado" "noticiaPrincipal noticiaPrincipal sidebar" "seccionNoticias seccionNoticias sidebar" "fotoGaleria fotoGaleria fotoGaleria" "videoGaleria videoGaleria videoGaleria" "noticiaClubes noticiaClubes noticiaClubes" "piePagina piePagina piePagina";
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 0.5fr 2fr 1fr 1fr 1fr 1fr 0.5fr;
+    /* Espaciado */
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+  }
+  .contenedorContacto {
+    display: grid;
+    /*Estructura por áreas */
+    grid-template-areas: "encabezado" "formContacto" "piePagina";
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.5fr 2fr 0.5fr;
+    /* Espaciado */
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+  }
+  .contenedorNoticias {
+    display: grid;
+    /*Estructura por áreas */
+    grid-template-areas: "encabezado encabezado encabezado" "tnPrincipal tnPrincipal tnPrincipal" "noticiaPrincipal noticiaPrincipal noticiaPrincipal" "fotoGaleria fotoGaleria fotoGaleria" "piePagina piePagina piePagina";
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 0.5fr 1fr 1fr 1fr 1fr 0.5fr;
+    /* Espaciado */
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+  }
+  .contenedorClubes {
+    display: grid;
+    /*Estructura por áreas */
+    grid-template-areas: "encabezado encabezado encabezado" "tnPrincipal tnPrincipal tnPrincipal" "clubesGaleria clubesGaleria clubesGaleria" "piePagina piePagina piePagina";
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 0.5fr 1fr 3fr 0.5fr;
+    /* Espaciado */
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+  }
+  /******* HEADER NAVEGABLE ********/
+  .navClubes {
+    background-color: rgb(255, 255, 255);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+  }
+  .navClubes a {
+    display: inline-flex;
+    float: inline-start;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 10px;
+    transition: all 400ms ease;
+  }
+  .navClubes a:hover {
+    background-color: crimson;
+    color: rgb(255, 255, 255);
+    transition: width 20s;
+  }
+  .logoClub img {
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    background-color: transparent;
+  }
+  /******* MENÚ ********/
+  /* .menu {
+      background-color: #ffff;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+  } */
+  /* #menuNavegador {
+      width: 60%;
+  } */
+  .logoLiga {
+    height: 70%;
+  }
+  .menuHorizontal {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    background-color: white;
+  }
+  .menuHorizontal li a {
+    padding: 10px 25px;
+    margin: 0px 10px;
+    text-decoration: none;
+    justify-content: right;
+    font-weight: 700;
+    font-size: 16px;
+    color: rgb(76, 76, 76);
+    transition: transform 250ms;
+    transform: scale(1.1);
+  }
+  .menuHorizontal li a:hover:not(.logoLiga) {
+    background-color: crimson;
+    color: white;
+  }
+}
+/* TABLET */
+/* estilos CSS */
+@media (min-width: 481px) and (max-width: 1023px) {
+  body {
+    background-color: aliceblue;
+  }
+  /* GRIDS por áreas */
+  .contenedor {
+    display: grid;
+    /*Estructura por áreas */
+    grid-template-areas: "encabezado encabezado" "noticiaPrincipal noticiaPrincipal" "sidebar sidebar" "seccionNoticias seccionNoticias" "fotoGaleria fotoGaleria" "videoGaleria videoGaleria" "noticiaClubes noticiaClubes" "piePagina piePagina";
+    grid-template-columns: 1fr 1fr;
+    /* Espaciado */
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+  }
+  .contenedorContacto {
+    display: grid;
+    /*Estructura por áreas */
+    grid-template-areas: "encabezado" "formContacto" "piePagina";
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.5fr 2fr 0.5fr;
+    /* Espaciado */
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+  }
+  .contenedorNoticias .noticiaGaleria {
+    grid-area: fotoGaleria;
+    background-color: lightgray;
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr;
+    grid-gap: 5px;
+    padding: 10px;
+  }
+  .contenedorClubes .clubesGaleria {
+    grid-area: clubesGaleria;
+    background-color: lightgray;
+    display: grid;
+    grid-template-columns: repeat(3, 1.5fr);
+    grid-gap: 5px;
+    padding: 10px;
+  }
+  /******* HEADER NAVEGABLE ********/
+  .navClubes {
+    background-color: lightgray;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+  }
+  .navClubes a {
+    display: flex;
+    text-decoration: none;
+    padding: 10px;
+  }
+  .navClubes a:hover {
+    background-color: crimson;
+    color: rgb(255, 255, 255);
+  }
+  .logoClub img {
+    width: 35px;
+    height: 35px;
+    align-items: center;
+    background-color: transparent;
+  }
+  /******* MENÚ ********/
+  .menu {
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100px;
+    align-items: center;
+  }
+  #menuNavegador {
+    width: auto;
+  }
+  .menuHorizontal {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .menuHorizontal li a {
+    padding: 5px 5px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+    color: lightslategrey;
+  }
+  .menuHorizontal li a:hover:not(.logoLiga) {
+    background-color: crimson;
+    color: white;
+  }
+  /******* FOTOGALERIA ********/
+  .contenedor .fotoGaleria {
+    grid-area: fotoGaleria;
+    background-color: lightgray;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 5px;
+    padding: 10px;
+  }
+  .contenedor .videoGaleria {
+    grid-area: videoGaleria;
+    background-color: lightgray;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 5px;
+    padding: 10px;
+  }
+  /******* NOTICIA CLUBES ********/
+  .middle {
+    font-size: 14px;
+  }
+  /******* PIE DE PAGINA ********/
+  .piePagina .grupo1 .redSocial a {
+    display: inline-flex;
+    flex-wrap: wrap;
+    border-radius: 4px;
+    text-decoration: none;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    color: #fff;
+    margin-right: 10px;
+    margin-top: 5px;
+    background-color: crimson;
+    text-align: center;
+    justify-content: center;
+    transition: all 400ms ease;
+  }
+  .piePagina .grupo1 .redSocial a:hover {
+    color: #0d2033;
+  }
+  .piePagina .grupo2 {
+    background-color: #ffffff;
+    padding: 5px;
+    text-align: center;
+    color: #0d2033;
+  }
+  .piePagina .grupo2 small {
+    font-size: 12px;
+  }
+  /******* QUE DESAPAREZCAN EN LA TABLET ********/
+  .fotoPortadaGaleria, .videoPortadaGaleria {
+    display: none;
+  }
+}
+@media (max-width: 756px) {
+  .logoLiga {
+    display: none;
+  }
+  .menu {
+    justify-content: center;
+  }
+}
+/* Celulares */
+/* estilos CSS */
+@media (max-width: 480px) {
+  body {
+    background-color: aliceblue;
+  }
+  /* GRIDS por áreas */
+  .contenedor {
+    display: grid;
+    /*Estructura por áreas */
+    grid-template-areas: "encabezado" "noticiaPrincipal" "sidebar" "seccionNoticias" "fotoGaleria" "videoGaleria" "noticiaClubes" "piePagina";
+    grid-template-columns: 1fr;
+    /* Espaciado */
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+  }
+  .contenedorContacto {
+    display: grid;
+    /*Estructura por áreas */
+    grid-template-areas: "encabezado" "formContacto" "piePagina";
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.5fr 2fr 0.5fr;
+    /* Espaciado */
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+  }
+  .contenedorNoticias .noticiaGaleria {
+    grid-area: fotoGaleria;
+    background-color: lightgray;
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    grid-gap: 5px;
+    padding: 10px;
+  }
+  .contenedorClubes .clubesGaleria {
+    grid-area: clubesGaleria;
+    background-color: lightgray;
+    display: grid;
+    grid-template-columns: 2fr;
+    grid-gap: 5px;
+    padding: 10px;
+  }
+  /******* MENÚ ********/
+  .menu {
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100px;
+    align-items: center;
+  }
+  #menuNavegador {
+    width: 100%;
+  }
+  .menuHorizontal {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .menuHorizontal li a {
+    padding: 10px 5px;
+    margin-bottom: 5px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    color: lightslategrey;
+  }
+  .menuHorizontal li a:hover:not(.logoLiga) {
+    background-color: crimson;
+    color: white;
+  }
+  /******* FOTOGALERIA ********/
+  .contenedor .fotoGaleria {
+    grid-area: fotoGaleria;
+    background-color: lightgray;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 5px;
+    padding: 10px;
+  }
+  .contenedor .videoGaleria {
+    grid-area: videoGaleria;
+    background-color: lightgray;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 5px;
+    padding: 10px;
+  }
+  /******* NOTICIA CLUBES ********/
+  .middle {
+    font-size: 10px;
+  }
+  /******* PIE DE PAGINA ********/
+  .piePagina .grupo1 .box figure img {
+    width: 150px;
+    margin-left: 10px;
+  }
+  .piePagina .grupo1 .redSocial a {
+    display: block;
+    border-radius: 4px;
+    text-decoration: none;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    color: #fff;
+    margin-right: 10px;
+    margin-top: 5px;
+    background-color: crimson;
+    text-align: center;
+    transition: all 400ms ease;
+  }
+  .piePagina .grupo1 .redSocial a:hover {
+    color: #0d2033;
+  }
+  .piePagina .grupo2 {
+    background-color: #ffffff;
+    padding: 5px;
+    text-align: center;
+    color: #0d2033;
+  }
+  .piePagina .grupo2 small {
+    font-size: 12px;
+  }
+  /******* QUE DESAPAREZCAN EN LA TABLET ********/
+  .navClubes, .fotoPortadaGaleria, .videoPortadaGaleria {
+    display: none;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
